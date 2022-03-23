@@ -1,0 +1,42 @@
+Most of the automation test engineers do use one set of framework to maintain their code for reusability and for easy maintenance.  These automation scripts are mainly used for Regression testing, Smoke testing and end-to-end testing.  And also used when a repeatable task needs to be achieved for more number of times.  One of the best framework is Page Object Model also called as POM framework.  POM in addition with Behaviour Driven Development model, also called as BDD is a perfect combination for UI automation.
+
+Why POM?
+
+To keep a clean separation between test and page specific methods.  Each page will be having web elements and their access methods.  When web element locators are changing then it is easy to locate and change accordingly in the specific page as it uses object repository.  This can be easily integrated with different tools like Selenium Webdriver, Playwright, Junit, TestNG, Maven, Cucumber etc.
+
+(a)	Directory structure in POM framework
+
+{{{{ insert_POM_Structure }}}{}}
+
+Pages folders will be having all the relavent pages under the /src/main folder.
+All the reusable methods will be under /src/main/utilities.
+Base page contains the Webdriver and browser initialisation.
+Test code will be in /src/tests.
+Output will be generated under /target folder.
+
+
+POM with BDD
+
+Page Object Model with BDD design pattern helps to bring both technical and business/ non-technical users together.  Cucumber is a testing tool, which supports BDD design pattern for automation testing.  POM with BDD solution offers to write the acceptance  criteria in Gherkin language, which is a simple Given, When & Then format; helps to meet the acceptance criteria.  
+
+E.g. Scenario with Given, When & Then
+
+
+
+
+
+
+
+
+Advantages of POM with BDD.
+
+Easy to understand the flow of code and easy to maintain
+Easy to get the test coverage
+Reusability
+Easy to work in collaboration
+It brings technical and business users together
+It can be used for Selenium or Playwright etc
+Tests can be logically grouped and executed
+Cucumber Reports can be automatically generated
+It can be integrated with CI/CD pipeline.
+
