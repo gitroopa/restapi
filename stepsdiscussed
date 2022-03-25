@@ -1,0 +1,14 @@
+Based on my understanding from “Intelligent Lead Assignment” confluence page is that, ILA solution is built to support the idea of “when to call a customer”.  The end-to-end scenario in general may be in the following format.
+
+Step 1:  Identify the customers <based on a criteria?> in SalesForce who needs to be CalledBack i.e. Outbound lead
+Step 2:  Agent adds the CallBack time (may be a task created) for an outbound lead
+Step 3:  From SalesForce, hit the API gateway endpoint with the lead details such as SalesForceLeadID, CallBackTime, DecisionMakingFlag
+Step 4:  [Roopa] Verify AWS Dynamo database, for the above SalesForceLeadID that all details are correctly stored with CorrelationID
+Step 5:  [Roopa] When the SystemTime matches to CallBack time, verify that AWS LambdaCronJob picks up above record and places it into the AWS EventBridge; upon successful placement; send the acknowledgment back to the Database
+Step 6:  [Roopa] EventBridge takes the above lead and hits the API gateway.
+Step 7:  Verify that the callBack information is correctly updated in SalesForce for the above Lead and the DecisionMaking Flag
+Step 8:  Probably check that the Agent has received the above callBack information.
+Step 9:  Verify that the Agent was able to place a call to Customer at the expected callBack slot (1hr slot).
+Step 10:  Assuming upon finishing the call, agent may update the SalesForce.
+
+The above steps are based on my understanding only; I am not sure if anything is incorrect in the above journey.  With respect to my scope of testing as discussed with Tatiana & Kieran is that above STEPS 4,5 & 6 only.  It looks like majority of the work is involved in SalesForce / CallAgents etc.  When the business scenarios are ready; I am happy to help from my side of AWS testing related.
